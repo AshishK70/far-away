@@ -31,18 +31,30 @@ function Form() {
   // 2) implement the state on element 
   // 3) update the value with state
 
+  // creating a state for description/input field
   const [description, setDescription] = useState("");
-  const [select, setSelect] = useState(1);
+  // creating a state for select field
+  const [quantity, setQuantity] = useState(1);
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e)
+    console.log(e);
+
+    // putting validation to check if description is empty to return
+    if (!description) return;
+
+    const newItem = { description, quantity, packed: false, id: Date.now() }
+    console.log(newItem);
+
+    // after form submittion reseting the values of select and input fields
+    setDescription('');
+    setQuantity(1)
   }
 
   return (
     <form className="add-form" onSubmit={handleSubmit}>
       <h3>Trips accessories 😍</h3>
 
-      <select value={select} onChange={(e) => setSelect(Number(e.target.value))}>
+      <select value={quantity} onChange={(e) => setQuantity(Number(e.target.value))}>
         {Array.from({ length: 20 }, (_, i) => i + 1).map(num => <option value={num} key={num}>{num}</option>)}
       </select>
 

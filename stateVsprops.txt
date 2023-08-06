@@ -1,0 +1,16 @@
+State__
+
+1) Internal Data owned by component
+2) component "memory"
+3) Can ve updated by the component itseld 
+4) Updating state causes component to re-render
+5) Used to make components interactive
+
+
+Props__
+
+1) External data , owned by parent component
+2) Similar to function parameters
+3) Read-Only 
+4) Receiving new props causes component to re-render. Usually when the parent 's state has benn updated.
+5) Used by parent to configuration of child component("settings")
