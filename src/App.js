@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
   { id: 2, description: "Socks", quantity: 12, packed: false },
@@ -24,6 +26,13 @@ function Logo() {
 }
 
 function Form() {
+  // working with controlled elemets  - 
+  // 1) define a peice of state
+  // 2) implement the state on element 
+  // 3) update the value with state
+
+  const [description, setDescription] = useState("");
+  const [select, setSelect] = useState(1);
   function handleSubmit(e) {
     e.preventDefault();
     console.log(e)
@@ -32,10 +41,14 @@ function Form() {
   return (
     <form className="add-form" onSubmit={handleSubmit}>
       <h3>Trips accessories 😍</h3>
-      <select>
+
+      <select value={select} onChange={(e) => setSelect(Number(e.target.value))}>
         {Array.from({ length: 20 }, (_, i) => i + 1).map(num => <option value={num} key={num}>{num}</option>)}
       </select>
-      <input type="text" placeholder="Enter Items "></input>
+
+      <input type="text" placeholder="Enter Items " value={description} onChange={(e) =>
+        setDescription(e.target.value)
+      }></input>
       <button>Add</button>
     </form>
   )
