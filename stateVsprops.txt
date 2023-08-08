@@ -14,3 +14,19 @@ Props__
 3) Read-Only 
 4) Receiving new props causes component to re-render. Usually when the parent 's state has benn updated.
 5) Used by parent to configuration of child component("settings")
+
+
+Thinking In React - It's a core skiill
+1. How to work with REACT API
+2. Thinking In REACT - (a) Breaking the desired the UI into components and esttablish component tree
+                       (b) Buil static version in React ( without state )
+                       (c) Think about State - 
+                           1. When to use state
+                           2. Types of state:local vs global
+                           3. Where to place each piece of state
+                       (d) Establish data flow - 
+                           1. One way data flow
+                           2. Child-to-parent communication
+                           3. Accessing the global state
+                       (e) Point (c) & (d) are called state management
+                       
