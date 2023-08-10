@@ -30,3 +30,4 @@ Thinking In React - It's a core skiill
                            3. Accessing the global state
                        (e) Point (c) & (d) are called state management
                        
+                       
