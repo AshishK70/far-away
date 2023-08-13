@@ -7,11 +7,16 @@ const initialItems = [
 ];
 
 export default function App() {
+  const [items, setItems] = useState([]);
+
+  function handleAtItems(item) {
+    setItems(items => [...items, item]);
+  }
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
+      <Form onAddItems={handleAtItems} />
+      <PackingList items={items} />
       <Stats />
     </div>
   )
@@ -25,7 +30,7 @@ function Logo() {
 
 }
 
-function Form() {
+function Form({ onAddItems }) {
   // working with controlled elemets  - 
   // 1) define a peice of state
   // 2) implement the state on element 
@@ -35,6 +40,7 @@ function Form() {
   const [description, setDescription] = useState("");
   // creating a state for select field
   const [quantity, setQuantity] = useState(1);
+
   function handleSubmit(e) {
     e.preventDefault();
     console.log(e);
@@ -44,6 +50,8 @@ function Form() {
 
     const newItem = { description, quantity, packed: false, id: Date.now() }
     console.log(newItem);
+
+    onAddItems(newItem);
 
     // after form submittion reseting the values of select and input fields
     setDescription('');
@@ -66,11 +74,11 @@ function Form() {
   )
 }
 
-function PackingList() {
+function PackingList({ items }) {
   return (
     <div className="list">
       <ul >
-        {initialItems.map((item) => (
+        {items.map((item) => (
           <Item item={item} key={item.id} />
         ))}
       </ul>
